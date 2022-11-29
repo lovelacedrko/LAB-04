@@ -1,0 +1,31 @@
+/*the goal of this program is to control servo motor with LDR and displaying bitvalue, voltages and LDR resistance on the serial monitor*/
+
+#include<Servo.h>
+int bitValue;
+int lightpin=A0;
+int servopin=3;
+Servo myservo;
+int angle;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(lightpin,INPUT);// set inputs pin
+ myservo.attach(servopin);
+ pinMode(servopin,OUTPUT);// set output pin
+}
+
+void loop() {
+int bitValue=analogRead(lightpin);// read the LDR on A0:
+float x = bitValue; //give bitvalues in decimals:
+float y = 0.005 * x; //give voltage values in decimals:
+float r = y/0.005; //give resistance values in decimals:
+Serial.print("bitValue =  ");// display message on serial monitor:
+Serial.print(bitValue);//display PB values on seria monitor:
+
+Serial.print(" , Voltage = ");// display message on serial monitor:
+Serial.println(y); //display Voltage values on serial monitor:  
+
+Serial.print("resistance =");// display message on serial monitor:
+Serial.println(r);//display resistance values on serial monitor:  
+
+}
