@@ -1,0 +1,20 @@
+/* THE GOAL OF THIS CODE IS TO CONTROL A SERVO MOTOR WITH A JOYSTICK*/
+
+#include <Servo.h> 
+Servo servo_pan;  // servo 1
+Servo servo_tilt; // servo 2
+
+int joyX = A0; // Arduino pin connected to VRX pin
+int joyVal;
+void setup() {
+  // put your setup code here, to run once:
+ servo_pan.attach(5);
+ servo_tilt.attach(6);
+}
+
+void loop() {
+joyVal = analogRead(joyX);// read analog X and Y analog values
+joyVal = map(joyVal, 0 , 1023 , 0 , 180);// scale it to the servo's angle (0 to 180)
+servo_tilt.write( joyVal);//;rotate servo motor 
+delay(15);
+}
