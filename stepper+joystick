@@ -38,9 +38,9 @@ val = analogRead (joystick);
  }
  while (val <= 500) //move motor opposite direction
  {
-    int speed = map (val,523,1023,5,1000); // map speed between 5 and 5000 rpm
+    int speed = map (val,500,0,5,500); // map speed between 5 and 5000 rpm
 stepper.setSpeed (100);//set motor speed
-stepper.step (1);//move motor 1 step
+stepper.step (-1);//move motor 1 step
 val = analogRead (joystick);
  }
  }
