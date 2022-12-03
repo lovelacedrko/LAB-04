@@ -1,3 +1,5 @@
+/* the goal of this program is to use a jopystick to control the speed and direction of a stepper mottor*/
+
 #include <Stepper.h>
 //define constants
 #define STEPS 32 // number of steps per interval motor revolution
