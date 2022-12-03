@@ -1,3 +1,5 @@
+/* the goal of this program is to use an LDR to control a stepper motor */
+
 // First Motor connections
 int ENA = 10;
 int IN1 = 9;
