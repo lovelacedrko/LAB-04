@@ -6,10 +6,10 @@ int StepsRequired;// number of steps required
 
 // create instance of stepper class, specify pins used for motor coil, the pins used are 8-9-10-11, 
 //connected to UIN2003 Motor Driver In, In2, In3, In, pins entered in sequence 1-3-2-4 for proper step sequencing 
-#define In1 8
-#define In2 9
-#define In3 10
-#define In4 11
+#define In1 11
+#define In2 10
+#define In3 9
+#define In4 8
 Stepper stepper(STEPS, In4 ,In2 ,In3 ,In1);
 #define joystick A0
 
