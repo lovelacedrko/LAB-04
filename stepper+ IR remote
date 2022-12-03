@@ -1,3 +1,4 @@
+/* the goal of this program is to use an IR remote to change the direction of a stepper motor*/
 #include <IRremote.h>
 #include <IRremoteInt.h>
 #include <IRremoteTools.h>
