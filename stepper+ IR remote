@@ -1,0 +1,58 @@
+#include <IRremote.h>
+#include <IRremoteInt.h>
+#include <IRremoteTools.h>
+
+#include <Stepper.h>
+
+ int RECV_PIN = 5; // the pin the IR receiver is connected to pin 12
+#define F 16736925 // FORWARD
+#define B 16754775 // BACKWARD
+#define L 16720605 // LEFT
+#define R 16761405 // RIGHT
+#define S 16712445 // STOP
+#define UNKNOWN_F 5316027// FORWARD
+#define UNKNOWN_B 2747854299//BACKWARD
+#define UNKNOWN_L 1386468383//LEFT
+#define UNKNOWN_R 553536855// RIGHT
+#define UNKNOWN_S 3622325019//STOP
+
+// define constants
+const float STEPS_PER_REV = 32;// number of steps per interval motor revolution
+const float GEAR_RED = 64;//AMOUNT OF GEAR REDUCTION
+const float STEPS_PER_OUT_REV = STEPS_PER_REV * GEAR_RED;//NUMBER OF STEPS PER GEARED OUTPUT ROTATION
+//define variables
+int StepsRequired;//number of stepes required
+Stepper steppermotor(STEPS_PER_REV, 8, 10, 9, 11);
+
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+unsigned long val;
+unsigned long preMillis;
+
+void setup() {
+  irrecv.enableIRIn(); 
+}
+
+void loop() {
+  if (F){
+Clockwise();
+  }
+  else{
+    if(B){
+      Counterclockwise();
+    }
+  }
+
+}
+void Clockwise(){
+  // Rotate CW turn slowly
+StepsRequired = STEPS_PER_OUT_REV;
+steppermotor.setSpeed(100);
+steppermotor.step(StepsRequired);
+}
+
+void Counterclockwise(){
+  StepsRequired = - STEPS_PER_OUT_REV;
+steppermotor.setSpeed(700);
+steppermotor.step(StepsRequired);
+}
